@@ -21,7 +21,7 @@ def call(body) {
                    '''
                 retry(3) {
                     def project = flow.getGitHubProject()
-                    def response = bayesianAnalysis url: 'https://bayesian-link', gitUrl: "https://github.com/${project}.git"
+                    def response = bayesianAnalysis url: 'http://bayesian-link:32000', gitUrl: "https://github.com/${project}.git"
                     if (response.success) {
                         utils.addAnnotationToBuild('fabric8.io/bayesian.analysisUrl', response.getAnalysisUrl())
                     } else {
